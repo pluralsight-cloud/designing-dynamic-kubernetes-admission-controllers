@@ -1,0 +1,40 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: com.dev.image-checker
+webhooks:
+- name: com.dev.image-checker
+  rules:
+  - apiGroups:   [""]
+    apiVersions: ["v1"]
+    operations:  ["CREATE"]
+    resources:   ["pods"]
+    scope:       "Namespaced"
+  clientConfig:
+    service:
+      namespace: default
+      name: image-checker
+      path: "/"
+    caBundle: |
+      LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURHVENDQWdHZ0F3SUJBZ0lKQU5KampYUjh4
+      THZYTUEwR0NTcUdTSWIzRFFFQkN3VUFNQ014SVRBZkJnTlYKQkFNTUdFbHRZV2RsSUZaaGJHbGtZ
+      WFJwYjI0Z1YyVmlhRzl2YXpBZUZ3MHlNekF5TVRjeE5qRTVNemxhRncweQpNekF6TVRreE5qRTVN
+      emxhTUNNeElUQWZCZ05WQkFNTUdFbHRZV2RsSUZaaGJHbGtZWFJwYjI0Z1YyVmlhRzl2CmF6Q0NB
+      U0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU10SnIzNmc0ZFhoVi9XOEhw
+      cUQKUkFZdjFZRmZVZUEyS21rQjJCR3hRZ21WMVJaN1ZqZHNVY0lORHgvQzhocmc0NlZoV1cyUkJE
+      d3lKVDZDUHVTTwpxWVpFM1lYK0FhRWhHb2pxdjIzdnpzemtZQWJ6L0diRFMxR0dyck44cldYWld0
+      NHIwZnMvTVQ4UjdzYWFOUW5OCll6VWZvNVU2cGxpR3ZUY3JnOXY3RU9zZmdKUWZCcDFpRzBHb3p3
+      akpDUXNIK253amZheVlXVmRXQkVKNDh5R0kKYXpOVG4zaHdOeTd4c2UyR3NES1BxbVMvTnhEbkIy
+      aDN5TGJoWEk5Nk1IYVk2S2dJZk5EaTAwWUJERnk5b0JrYwpwTjFjbktaOHA2cS9jU0hoREpWamdu
+      RUtxREU0aEF5QjF6QjhZeWtCUWw1b1pNYXdOdnl0V1BpTGkvS1Nxa0YvCjYva0NBd0VBQWFOUU1F
+      NHdIUVlEVlIwT0JCWUVGRnJkTFJaU2F3MXdNWXJzUWJJQ1p3WHk0TjRiTUI4R0ExVWQKSXdRWU1C
+      YUFGRnJkTFJaU2F3MXdNWXJzUWJJQ1p3WHk0TjRiTUF3R0ExVWRFd1FGTUFNQkFmOHdEUVlKS29a
+      SQpodmNOQVFFTEJRQURnZ0VCQURkNDRvd2RDQ3p4c29LYm9wRkVZRlAxQzRqTVp1MkVrVy9YNFRp
+      QVVqczF5M3BzCm1pSGM2c3BYTW1RUFFuZndtSmpxSE5ma2xCWENFSnlkd0JVa1JBQ3hLbTFrV2I0
+      QjhlS1FXbFA1OVY5TWxuczIKdEdWQWQrcVdldlEvVTBsT3hVU1F1VmpEeUUvbXRTTlcxWnRuUk01
+      SkwvV3dtc0I0VHJXZDZQSm42NjJ0U2Y5YQpkdytUZ05mNjdxSVZtWCt4Sm5QamFRNG1VcnVFSFR2
+      cWhSR3A2dWcrY1ZFVG5NQVdsNmhCREtYREJzajBMMFBNCkpIQ0l4RjFXd1BBdzV6dUtNbGZJdEVp
+      WU44MVBwcjhKSGRlNmJ2UEttcFdvdXNydUtSbWppelVsaTgzbWcyNEcKTlRvckRsalo3UTVybjFE
+      LzFqMHVsYmZlYi93V1JyNDA4cFZZUEh3PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  admissionReviewVersions: ["v1"]
+  sideEffects: None

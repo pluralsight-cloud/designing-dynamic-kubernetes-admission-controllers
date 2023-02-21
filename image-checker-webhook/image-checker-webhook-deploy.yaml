@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-checker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-checker
+  template:
+    metadata:
+      labels:
+        app: image-checker
+      name: image-checker
+    spec:
+      containers:
+      - image: USERNAME/image-checker:1.0
+        name: image-checker
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-checker
+spec:
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: image-checker

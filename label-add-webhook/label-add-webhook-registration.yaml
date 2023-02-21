@@ -1,0 +1,40 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: com.dev.label-add
+webhooks:
+- name: com.dev.label-add
+  rules:
+  - apiGroups:   [""]
+    apiVersions: ["v1"]
+    operations:  ["CREATE"]
+    resources:   ["pods"]
+    scope:       "Namespaced"
+  clientConfig:
+    service:
+      namespace: default
+      name: label-add
+      path: "/"
+    caBundle: |
+      LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDekNDQWZPZ0F3SUJBZ0lKQVB2Q2laakxU
+      Nkh6TUEwR0NTcUdTSWIzRFFFQkN3VUFNQnd4R2pBWUJnTlYKQkFNTUVVeGhZbVZzSUVGa1pDQlha
+      V0pvYjI5ck1CNFhEVEl6TURJeE56RTJNekExTkZvWERUSXpNRE14T1RFMgpNekExTkZvd0hERWFN
+      QmdHQTFVRUF3d1JUR0ZpWld3Z1FXUmtJRmRsWW1odmIyc3dnZ0VpTUEwR0NTcUdTSWIzCkRRRUJB
+      UVVBQTRJQkR3QXdnZ0VLQW9JQkFRRCthUVZvSDRJcHFrM0tVcUtuNytva1JWTVpsbDU0bG02bTN0
+      Q1YKZTZSbnVoZEUweWd3a0tFNjRIbm5XZ215QkVRb0wvYWRSek5oUVh5czdoRG1LbCtnd090d0VO
+      aXFPS1h5aWNKcAo2UUJHZkhpU0EvYVU3SzUrOXhOTFliTG1MazdCdis1RjYwMmJGSGtHVXZVd0RQ
+      OWFmRS9qbnpHZnNnc0Vkd0RMCnk1UzdqaWx2QzdKM0JRM01wTFhUS25uOW5ndU0zQVFZTjV3ZFBv
+      cjd3dStjbld5UVRUNFVuNEtqWStGaGQ0dE8KODVEVGVPdmhGWGhycXo3VXFsRUwvRnNMdndESVN1
+      VnlWWnZ1NmljR0k5dGpXbU4rUENHVGRHdDJjRVdOY3pZOApWdEpIeDA0UVRtN3NZNm54MndUTFNI
+      TUZRcTBQY1UxR3hHZmxDalF6aUJOdU9LTzFBZ01CQUFHalVEQk9NQjBHCkExVWREZ1FXQkJRcDFT
+      NEtOZll4ZHpRQTZWV2EveE1pdGZ1UnJUQWZCZ05WSFNNRUdEQVdnQlFwMVM0S05mWXgKZHpRQTZW
+      V2EveE1pdGZ1UnJUQU1CZ05WSFJNRUJUQURBUUgvTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFD
+      MQpnSXNzZGFDYUkrSWVjdkFqOGVtVWdNby9oRU1WaGJQZzFkS2tRb3A5UXAweVpRYUdtdCtoL0dT
+      TDh3MlBnVVo3CmNTNlBvUzQrN3VKL0JQYm1GODRMRHI0d3hKcDc4R09oVWo3R25oYWZHZFY5eXVi
+      bko0Tk9rMUlYVlc0MEwxa0MKQVBFWm1GSEx4d2VJdlZsY3hIdDIvbXpjU083QkdzM05EQjVTdjMz
+      dnIwTC9FSGFROUQ2d2ZCTHAwaWRuU05UaQptc1REdHF3NFRLb2Zsa1Uzckx1b0FibHdaNW9JNEV5
+      TkpQYmdvUk9RcWxQWk1kRWFDTjdEK1dqSE9GUElUOHZKCm1XNmMwd0VJMlgxNGUvM0pQbi9OQmty
+      OHNnR1M0SjlTbkQ3R2tLaTE2cW9wa1haMHZMNytyNWMrNTZ6R2RoNUMKU05SRjZsNm14WjRkUDdv
+      UzNpQWYKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
