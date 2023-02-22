@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: latest-tester
+  name: label-tester
 spec:
   containers:
   - name: nginx
