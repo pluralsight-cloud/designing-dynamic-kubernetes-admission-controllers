@@ -15,7 +15,7 @@ spec:
       name: label-add
     spec:
       containers:
-      - image: acantha/label-add:2.0
+      - image: linuxacademycontent/k8s-label-add-webhook:2.0
         name: label-add
         imagePullPolicy: Always
         ports:
