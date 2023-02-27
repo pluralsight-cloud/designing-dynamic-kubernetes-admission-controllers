@@ -15,6 +15,9 @@ chmod 644 *.key
 cp ca.crt ./app
 cp server.crt ./app
 cp server.key ./app
+cp ca.key ./app
+cp ca.srl ./app
+cp server.csr ./app
 
 # Cleanup
 rm ca.crt
