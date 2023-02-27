@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: label-add
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: label-add
+  template:
+    metadata:
+      labels:
+        app: label-add
+      name: label-add
+    spec:
+      containers:
+      - image: acantha/label-add:2.0
+        name: label-add
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8443
+        env:
+        - name: labels
+          value: '"env": "dev","team": "devops"'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: label-add
+spec:
+  ports:
+  - port: 443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: label-add
